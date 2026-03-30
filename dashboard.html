@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>User Dashboard</h2>
+    <p>Welcome, <span id="currentUserEmail"></span>!</p>
+
+    <h3>Product Inventory</h3>
+<input type="text" id="productSearch" placeholder="Search by ID or Name" onkeyup="searchProducts()" />
+
+<table id="productTable">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Products will be dynamically inserted -->
+  </tbody>
+</table>
+
+<button id="addProductBtn" onclick="addProduct()">Add Product</button>
+
+<button onclick="toggleActivity()">View Activity</button>
+<button onclick="logout()">Logout</button>
+<div id="adminActivityContainer" style="display:none;">
+    <h3>Activity Log</h3>
+    <table id="activityTable">
+        <thead>
+            <tr>
+                <th>Account Name</th>
+                <th>Action</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Activity will be inserted here -->
+        </tbody>
+    </table>
+	
+	
+  <!-- Use external script -->
+  <script src="script.js"></script>
+  <script>
+    // Call the dashboard setup function
+    loadUserDashboard();
+  </script>
+</body>
+</html>

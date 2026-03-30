@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+    <h2>Admin Dashboard</h2>
+    <p>Welcome, Admin <span id="currentUserEmail"></span>!</p>
+
+<button onclick="toggleActivity()">View Activity</button>
+<div id="adminActivityContainer" style="display:none;">
+    <h3>Activity Log</h3>
+    <table id="activityTable">
+        <thead>
+            <tr>
+                <th>Account Name</th>
+                <th>Action</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Activity will be inserted here -->
+        </tbody>
+    </table>
+</div>
+
+    <button onclick="toggleUsers()">Users</button>
+<div id="adminUsersContainer" style="display:none;">
+    <table id="usersTable">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Is Admin</th>
+                <th>Can Add Product</th>
+                <th>Can Edit Product</th>
+                <th>Can View Activity</th>
+                <th>Confirm</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Users will be inserted here -->
+        </tbody>
+    </table>
+</div>
+
+    <button onclick="toggleProducts()">View Products</button>
+<div id="adminProductsContainer" style="display:none;">
+    <input type="text" id="adminProductSearch" placeholder="Search by ID or Name" onkeyup="searchAdminProducts()" />
+    
+    <button id="addProductBtn" onclick="addProduct()">Add Product</button>
+
+    <table id="adminProductTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Products will be inserted here -->
+        </tbody>
+    </table>
+</div>
+
+<button onclick="toggleProductChanges()">View Product Changes</button>
+
+<div id="productChangesContainer" style="display:none;">
+    <h3>Product Quantity Changes</h3>
+    <label for="timeFilter">Time Range: </label>
+    <select id="timeFilter" onchange="loadProductChanges()">
+        <option value="1h">Last 1 Hour</option>
+        <option value="1d">Last 1 Day</option>
+        <option value="1m">Last 1 Month</option>
+        <option value="1y">Last 1 Year</option>
+    </select>
+
+    <table id="productChangesTable">
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Name</th>
+                <th>Quantity Change</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Changes will be inserted here -->
+        </tbody>
+    </table>
+</div>
+
+    <button onclick="logout()">Logout</button>
+	
+	<button onclick="resetSystem(localStorage.getItem('currentUser'))" style="background:red; color:white;">
+    Reset System
+</button>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
